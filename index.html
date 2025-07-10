@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boombox MP3 Player</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+    input {
+      padding: 12px;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 10px;
+      background-color: #00ffcc;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #00ddb3;
+    }
+    audio {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 8px;
+      background: #333;
+    }
+    .footer {
+      margin-top: 4rem;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎵 Boombox MP3 Player</h1>
+  <input type="text" id="mp3url" placeholder="Tempelkan link MP3 http:// di sini" />
+  <button onclick="putarAudio()">▶ Putar</button>
+  <audio id="audioplayer" controls></audio>
+
+  <div class="footer">
+    © 2025 Renzy Player
+  </div>
+
+  <script>
+    function putarAudio() {
+      const url = document.getElementById("mp3url").value.trim();
+      const audio = document.getElementById("audioplayer");
+
+      if (!url.startsWith("http://")) {
+        alert("Gunakan link MP3 yang diawali dengan http://");
+        return;
+      }
+
+      audio.src = url;
+      audio.play();
+    }
+  </script>
+
+  <div class="mario-container">
+    <img src="https://i.imgur.com/6RL0M6G.gif" alt="Mario Walking" class="mario">
+  </div>
+  <style>
+    .mario-container {
+      position: fixed;
+      bottom: 10px;
+      left: -100px;
+      width: 100px;
+      height: 100px;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .mario {
+      width: 80px;
+      height: auto;
+      animation: walkAcross 10s linear infinite;
+    }
+    @keyframes walkAcross {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(110vw); }
+    }
+  </style>
+</body>
+</html>
